@@ -7,7 +7,15 @@ function useFetchData() {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
-    fetchData();
+    setIsLoading(true);
+
+    const timer = setTimeout(() => {
+      fetchData();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   async function fetchData() {
@@ -23,7 +31,6 @@ function useFetchData() {
       }
 
       setData(responseData);
-      console.log(responseData);
     } catch (err) {
       if (err instanceof Error && err.message) {
         setErrorMessage(err.message);
