@@ -15,7 +15,11 @@ const PaginationControl: FC<PaginationControlProps> = ({
 }) => {
   return (
     <div className="pagination-controls">
-      <button onClick={handlePrevious} disabled={currentPage === 1}>
+      <button
+        onClick={handlePrevious}
+        disabled={currentPage === 1}
+        aria-label="Previous Page"
+      >
         Previous
       </button>
 
@@ -23,7 +27,11 @@ const PaginationControl: FC<PaginationControlProps> = ({
         Page {currentPage} of {totalPages}
       </span>
 
-      <button onClick={handleNext} disabled={currentPage === totalPages}>
+      <button
+        onClick={handleNext}
+        disabled={currentPage === totalPages}
+        aria-label="Next Page"
+      >
         Next
       </button>
     </div>
